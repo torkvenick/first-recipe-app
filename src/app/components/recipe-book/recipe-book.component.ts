@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Recipe } from './recipe.model';
+import { RecipeBookService } from '../../shared/recipe-book.service';
 
 @Component({
   selector: 'app-recipe-book',
   templateUrl: './recipe-book.component.html',
   styleUrl: './recipe-book.component.css',
 })
-export class RecipeBookComponent {
+export class RecipeBookComponent implements OnInit {
   recipe: Recipe;
-  openDetails(recipe: Recipe) {
-    this.recipe = recipe;
+  recipeBookService = inject(RecipeBookService);
+  ngOnInit() {
+    this.recipeBookService.emittedRecipe.subscribe((recipe) => {
+      this.recipe = recipe;
+    });
   }
 }

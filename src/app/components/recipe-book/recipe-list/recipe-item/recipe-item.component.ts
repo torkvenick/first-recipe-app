@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { RecipeBookService } from '../../../../shared/recipe-book.service';
 import { Recipe } from '../../recipe.model';
 
 @Component({
@@ -8,8 +9,10 @@ import { Recipe } from '../../recipe.model';
 })
 export class RecipeItemComponent {
   @Input() recipe: Recipe;
-  @Output() onRecipeSelected = new EventEmitter<Recipe>();
+  @Input() id: number;
+  recipeBookService = inject(RecipeBookService);
+
   onSelect() {
-    this.onRecipeSelected.emit(this.recipe);
+    this.recipeBookService.selectRecipe(this.id, this.recipe);
   }
 }
