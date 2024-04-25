@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { GeneralService } from '../../shared/general.service';
 
 @Component({
   selector: 'app-header',
@@ -7,16 +8,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class HeaderComponent {
   collapsed = true;
-  @Output() tabClicked = new EventEmitter<boolean>();
-  @Output() featureSelected = new EventEmitter<string>();
-  openRecipes() {
-    this.tabClicked.emit(true);
-  }
-  openShoppingList() {
-    this.tabClicked.emit(false);
-  }
 
+  constructor(private gService: GeneralService) {}
   onSelect(feature: string) {
-    this.featureSelected.emit(feature);
+    this.gService.navigatedPage.emit(feature);
   }
 }

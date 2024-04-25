@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GeneralService } from './shared/general.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,12 @@ export class AppComponent {
   prop: string;
   isRecipeOpened = false;
   navigatedPage = 'recipe';
+
+  constructor(private glService: GeneralService) {
+    this.glService.navigatedPage.subscribe(
+      (page) => (this.navigatedPage = page)
+    );
+  }
   showSection(isRecipeSection: boolean) {
     this.isRecipeOpened = isRecipeSection;
   }

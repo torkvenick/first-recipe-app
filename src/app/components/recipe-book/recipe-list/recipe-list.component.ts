@@ -12,6 +12,6 @@ export class RecipeListComponent implements OnInit {
   recipes: Recipe[];
 
   ngOnInit() {
-    this.recipes = this.recipeBookService.recipes;
+    this.recipes = this.recipeBookService.getRecipes();
   }
 }

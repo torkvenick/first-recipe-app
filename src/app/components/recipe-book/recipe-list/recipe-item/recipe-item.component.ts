@@ -13,6 +13,6 @@ export class RecipeItemComponent {
   recipeBookService = inject(RecipeBookService);
 
   onSelect() {
-    this.recipeBookService.selectRecipe(this.id, this.recipe);
+    this.recipeBookService.emittedRecipe.emit(this.recipe);
   }
 }
