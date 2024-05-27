@@ -1,6 +1,7 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RecipeBookService } from '../../../../shared/recipe-book.service';
 import { Recipe } from '../../recipe.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-item',
@@ -10,9 +11,10 @@ import { Recipe } from '../../recipe.model';
 export class RecipeItemComponent {
   @Input() recipe: Recipe;
   @Input() id: number;
-  recipeBookService = inject(RecipeBookService);
+
+  constructor(private router: Router, private rbService: RecipeBookService) {}
 
   onSelect() {
-    this.recipeBookService.emittedRecipe.emit(this.recipe);
+    this.router.navigate(['/recipe-book', this.id]);
   }
 }

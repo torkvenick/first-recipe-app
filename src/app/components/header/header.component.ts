@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { GeneralService } from '../../shared/general.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +7,4 @@ import { GeneralService } from '../../shared/general.service';
 })
 export class HeaderComponent {
   collapsed = true;
-
-  constructor(private gService: GeneralService) {}
-  onSelect(feature: string) {
-    this.gService.navigatedPage.emit(feature);
-  }
 }
