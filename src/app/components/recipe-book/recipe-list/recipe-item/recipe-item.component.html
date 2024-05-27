@@ -2,6 +2,8 @@
   (click)="onSelect()"
   class="list-group-item clearfix mb10"
   style="cursor: pointer"
+  [routerLink]="id"
+  routerLinkActive="active"
 >
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>

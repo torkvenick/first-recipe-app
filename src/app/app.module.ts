@@ -15,6 +15,7 @@ import { RecipeBookService } from './shared/recipe-book.service';
 import { ShoppingListService } from './shared/shopping-list.service';
 import { GeneralService } from './shared/general.service';
 import { AppRoutingModule } from './app-routing.module';
+import { RecipeEditComponent } from './components/recipe-book/recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
     RecipeItemComponent,
     ShoppingListEditComponent,
     DropdownDirective,
+    RecipeEditComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [GeneralService, RecipeBookService, ShoppingListService],
